@@ -197,36 +197,58 @@ public class MyBST<Ttype> {
 	    nodes.add(currentNode.getElement());
 	    storeInorder(currentNode.getRightCh(), nodes);
 	}
-	
+	/*          30
+			    /
+			  20
+			  /
+			10
+			/
+			9
+*/
 	//Izveidot funkciju, kas nodrošinās konkrētā mezgla apakškoku rotāciju uz labo pusi (0.5p).
+	//                            rightRotate(30)
 	public MyBSTNode<Ttype> rightRotate(MyBSTNode<Ttype> y) {
+		//  30 == null (false) || 30.getLeftCh(20) == null(false)
 	    if (y == null || y.getLeftCh() == null) {
 	        return y; // Cannot rotate if no left child
 	    }
-
+	    //              x = 30.getLeftCh(20)
 	    MyBSTNode<Ttype> x = y.getLeftCh();
+	    //              T2 = 20.getRightCh(null);
 	    MyBSTNode<Ttype> T2 = x.getRightCh();
 
 	    // Perform rotation
+	    //20.setRightCh(30)
 	    x.setRightCh(y);
+	    //30.setLeftCh(null)
 	    y.setLeftCh(T2);
+	    
+	    /* 20
+	     *   \
+	     *    30
+	     *   /
+	     *  null */
 
 	    // Update parents if necessary
 	    if (T2 != null) {
 	        T2.setParent(y);
 	    }
-
+        //      yParent = 30.getParent(20)
 	    MyBSTNode<Ttype> yParent = y.getParent();
+	    //20.setParent(20);
 	    x.setParent(yParent);
+	    //30.setParent(20);
 	    y.setParent(x);
 
 	    if (yParent != null) {
+	    	// 20.getLeftCh(10) == 30
 	        if (yParent.getLeftCh() == y) {
 	            yParent.setLeftCh(x);
 	        } else {
 	            yParent.setRightCh(x);
 	        }
 	    } else {
+	    	//root = 20
 	        // y was root
 	        root = x;
 	    }
@@ -447,13 +469,12 @@ public class MyBST<Ttype> {
 			if (currentNode.getLeftCh() == null && currentNode.getRightCh() == null) {
 				MyBSTNode<Ttype> parentOfCurrentNode = currentNode.getParent();
 
-				// jānoņem saite uz kreiso bērnu
-				if (parentOfCurrentNode.getLeftCh().getElement().equals(element)) {
-					parentOfCurrentNode.setLeftCh(null);
-					// jānoņem saite uz labo bērnu
-				} else if (parentOfCurrentNode.getRightCh().getElement().equals(element)) {
-					parentOfCurrentNode.setRightCh(null);
+				if (parentOfCurrentNode.getLeftCh() != null && parentOfCurrentNode.getLeftCh().getElement().equals(element)) {
+				    parentOfCurrentNode.setLeftCh(null);
+				} else if (parentOfCurrentNode.getRightCh() != null && parentOfCurrentNode.getRightCh().getElement().equals(element)) {
+				    parentOfCurrentNode.setRightCh(null);
 				}
+
 
 			}
 
@@ -517,7 +538,7 @@ public class MyBST<Ttype> {
 
 				//                    10.(20) 34.(39) 34.(39) 37.(39)
 				// Caur labo pusi, meklēs "kreisāko bērnu"  inorder successor can be obtained by finding the minimum value in the right child of the node.
-				MyBSTNode<Ttype> temp = root.getRightCh();
+				MyBSTNode<Ttype> temp = currentNode.getRightCh();
 				//                      20 39 39 39
 				System.out.println(temp.getElement());
 				//             20.(null)  39.getLeftCh(null) 39.getLeftCh(null)

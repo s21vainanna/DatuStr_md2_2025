@@ -81,8 +81,117 @@ public class MainService {
 				      /  \
 				     9    30
 				    / \
-				   7  10
+				   7  10     */
+			bstForInteger.makeEmpty();
+			System.out.println("is empty!!!");
+			bstForInteger.add(30);
+			bstForInteger.add(40);
+			bstForInteger.add(20);
+			bstForInteger.add(10);
+			bstForInteger.add(12);
+			bstForInteger.add(9);
+			bstForInteger.add(7);
+			/*                    30
+						         /  \
+						       20    40
+						       /
+						     10
+						     / \
+						    9   12
+						   /
+						  7
+
+ */
+			
+			bstForInteger.print();
+			System.out.println("-------------------------------------------------------------");
+			bstForInteger.delete(7);
+			bstForInteger.print();
+			/*                	        30
+								       /  \
+								     20    40
+								     /
+								   10
+								  /  \
+								 9   12
+								  
 */
+			System.out.println("-------------------------------------------------------------");
+			bstForInteger.delete(9);
+			bstForInteger.print();
+			/*          30
+				       /   \
+				     20     40
+				     /
+				   10
+				     \
+				     12
+*/
+			System.out.println("-------------------------------------------------------------");
+			bstForInteger.delete(12);
+			bstForInteger.print();
+			/*              30
+					       /   \
+					     20     40
+					     /
+					   10
+ */
+			System.out.println("-------------------------------------------------------------");
+			bstForInteger.add(5);
+			bstForInteger.add(17);
+			bstForInteger.add(15);
+			bstForInteger.print();
+			System.out.println("-------------------------------------------------------------");
+			/*          30
+				       /  \
+				     20    40
+				     /
+				   10
+				  /  \
+				 5   17
+				     /
+				   15
+ */
+			bstForInteger.delete(10);
+			bstForInteger.print();
+			System.out.println("-------------------------------------------------------------");
+			/*          30
+				       /  \
+				     20    40
+				     /
+				   15
+				  /  \
+				 5   17     
+				   
+*/
+			bstForInteger.add(19);
+			bstForInteger.print();
+			System.out.println("-------------------------------------------------------------");
+			/*            30
+				         /  \
+				       20    40
+				      /
+				    15
+				   /  \
+				  5    17
+				          \
+				           19
+ */
+			bstForInteger.delete(15);
+			bstForInteger.print();
+			System.out.println("-------------------------------------------------------------");
+			/*            30
+				         /  \
+				       20    40
+				      /
+				    17
+				   /  \
+		pazūd->	  5    19
+				          
+				            
+*/
+			//bstForInteger.delete(20);
+			//bstForInteger.print();
 			
 			//System.out.println("----------------SEARCH------------------");
 			//System.out.println("6? -> " + bstForInteger.search(6));//true
